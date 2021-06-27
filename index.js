@@ -39,9 +39,9 @@ function responseConsole(res, console, bufferLimit = 8192, prefix = null) {
   return res.console;
 }
 
-function responseConsoleMiddleware(console) {
+function responseConsoleMiddleware(console, bufferLimit = 8192, prefix = null) {
   return function (req, res, next) {
-    responseConsole(res, console)
+    responseConsole(res, console, bufferLimit, prefix)
       .log(req.method + " " + req.url + "\n" + JSON.stringify(req.body));
 
     next();

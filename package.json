@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/mashthekeys/response-console/issues"
   },
-  "homepage": "https://github.com/mashthekeys/response-console#readme"
+  "homepage": "https://github.com/mashthekeys/response-console#readme",
+  "dependencies": {
+    "@mashthekeys/console-buffer": "^1.1.2"
+  }
 }

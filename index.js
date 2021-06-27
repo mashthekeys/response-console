@@ -5,19 +5,19 @@ module.exports.responseConsole.middleware = responseConsoleMiddleware;
 
 function responseConsole(res, console, bufferLimit = 8192, prefix = null) {
   res.console = {
-    log: (...args) => console.log(...args),
-    warn: (...args) => console.warn(...args),
-    error: (...args) => console.error(...args),
-    info: (...args) => console.info(...args),
-    table: (...args) => console.table(...args),
-    group: (...args) => console.group(...args),
-    groupEnd: Ø => console.groupEnd(),
+    log() { console.log.apply(console, arguments) },
+    warn() { console.warn.apply(console, arguments) },
+    error() { console.error.apply(console, arguments) },
+    info() { console.info.apply(console, arguments) },
+    table() { console.table.apply(console, arguments) },
+    group() { console.group.apply(console, arguments) },
+    groupEnd() { console.groupEnd.call(console) },
     flush: undefined
   };
 
   const buffer = new ConsoleBuffer(res.console, bufferLimit, prefix);
 
-  const endBuffering = () => {
+  const endBuffering = function () {
     buffer.flush();
 
     // All future writes will be flushed
@@ -42,7 +42,7 @@ function responseConsole(res, console, bufferLimit = 8192, prefix = null) {
 function responseConsoleMiddleware(console) {
   return function (req, res, next) {
     responseConsole(res, console)
-      .log(`${req.method} ${req.url}\n${JSON.stringify(req.body)}`);
+      .log(req.method + " " + req.url + "\n" + JSON.stringify(req.body));
 
     next();
   }

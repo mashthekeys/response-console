@@ -1,7 +1,9 @@
 const ConsoleBuffer = require("@mashthekeys/console-buffer");
 
+module.exports = responseConsole;
+module.exports.default = responseConsole;
 module.exports.responseConsole = responseConsole;
-module.exports.responseConsole.middleware = responseConsoleMiddleware;
+module.exports.middleware = responseConsoleMiddleware;
 
 function responseConsole(res, console, bufferLimit = 8192, prefix = null) {
   res.console = {

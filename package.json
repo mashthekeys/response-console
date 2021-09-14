@@ -1,6 +1,6 @@
 {
   "name": "@mashthekeys/response-console",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Adds a buffered console object onto a Response object, which outputs to its parent console when the response finishes. Comes with middleware for server logging by request. Intended to help logs remain coherent in high-concurrency applications.",
   "main": "index.js",
   "scripts": {

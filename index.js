@@ -14,10 +14,11 @@ function responseConsole(res, console, bufferLimit = 8192, prefix = null) {
     table() { console.table.apply(console, arguments) },
     group() { console.group.apply(console, arguments) },
     groupEnd() { console.groupEnd.call(console) },
+    buffer: undefined,
     flush: undefined
   };
 
-  const buffer = new ConsoleBuffer(res.console, bufferLimit, prefix);
+  const buffer = res.console.buffer = new ConsoleBuffer(res.console, bufferLimit, prefix);
 
   const endBuffering = function () {
     buffer.flush();
@@ -32,6 +33,8 @@ function responseConsole(res, console, bufferLimit = 8192, prefix = null) {
 
     // Disconnect the buffer from the response
     res.console = console;
+
+    this.buffer = null;
   };
 
   res.console.flush = endBuffering;

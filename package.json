@@ -1,10 +1,9 @@
 {
   "name": "@mashthekeys/response-console",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Adds a buffered console object onto a Response object, which outputs to its parent console when the response finishes. Comes with middleware for server logging by request. Intended to help logs remain coherent in high-concurrency applications.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,6 @@
   },
   "homepage": "https://github.com/mashthekeys/response-console#readme",
   "dependencies": {
-    "@mashthekeys/console-buffer": "^1.1.2"
+    "@mashthekeys/console-buffer": "^1.2.0"
   }
 }
